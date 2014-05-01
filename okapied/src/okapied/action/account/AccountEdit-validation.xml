@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <validator type="expression">
+	    <param name="expression">user.username != user.password</param>
+	    <message>Username and password can't be the same</message>
+	</validator>
+  <field name="user.username">
+      <field-validator type="stringlength">
+         <param name="maxLength">30</param>
+         <param name="minLength">1</param>
+         <message>Username can only be 30 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter a username</message>
+     </field-validator>
+     <field-validator type="regex">
+         <param name="expression">^[a-zA-Z0-9]*$</param>
+         <message>Username can only contain alphanumeric characters</message>
+     </field-validator>
+  </field>
+  <field name="user.firstName">
+      <field-validator type="stringlength">
+         <param name="maxLength">50</param>
+         <param name="minLength">1</param>
+         <message>Your first name can only be 50 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter your first name</message>
+     </field-validator>
+  </field>
+  <field name="user.lastName">
+      <field-validator type="stringlength">
+         <param name="maxLength">50</param>
+         <param name="minLength">1</param>
+         <message>Your last name can only be 50 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter your last name</message>
+     </field-validator>
+  </field>
+  <field name="user.email">
+	    <field-validator type="requiredstring">
+			<param name="trim">true</param>
+			<message key="Please enter your email address" />
+		</field-validator>
+		<field-validator type="email">
+			<message>Invalid email address</message>
+		</field-validator>
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in email</message>
+		</field-validator>
+  </field>
+  <field name="user.preferredEmail">
+		<field-validator type="email">
+			<message>Invalid email address</message>
+		</field-validator>
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in email</message>
+		</field-validator>
+  </field>
+  <field name="user.phoneNumber">
+      <field-validator type="stringlength">
+         <param name="maxLength">50</param>
+         <param name="minLength">0</param>
+         <message>Phone number can only be 50 characters long</message>
+     </field-validator>
+  </field>
+  <field name="user.password">
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in password</message>
+		</field-validator>
+    </field>
+  <field name="confirmPassword">
+		<field-validator type="regex">
+		    <param name="expression">^[^\s]+$</param>
+		    <message>No whitespace is allowed in password</message>
+		</field-validator>
+    </field>
+</validators>
