@@ -1,4 +1,4 @@
-mysqldump --user=okapied --password=mippy666 okapied > /data/okapied.sql
+mysqldump --user=okapied --password=password okapied > /data/okapied.sql
 cd /data
 rm -rf /data/okapied.tar.gz
 tar -czvf /data/okapied.tar.gz okapied.sql
