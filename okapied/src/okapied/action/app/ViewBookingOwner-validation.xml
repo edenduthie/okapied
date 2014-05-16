@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="positive">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Please select</message>
+		</field-validator>
+	</field>
+	<field name="userFeedback.conditionOnExit">
+		<field-validator type="int" short-circuit="true">
+			<param name="min">0</param>
+			<param name="max">5</param>
+			<message>Score between 0 and 5</message>
+		</field-validator>
+		<field-validator type="required" short-circuit="true">
+			<message>Please select</message>
+		</field-validator>
+	</field>
+	<field name="feedback.overall">
+		<field-validator type="int" short-circuit="true">
+			<param name="min">0</param>
+			<param name="max">5</param>
+			<message>Score between 0 and 5</message>
+		</field-validator>
+		<field-validator type="required" short-circuit="true">
+			<message>Please select</message>
+		</field-validator>
+	</field>
+	<field name="userFeedback.text">
+		<field-validator type="requiredstring" short-circuit="true">
+			<message>Please enter a description</message>
+		</field-validator>
+		<field-validator type="stringlength">
+			<param name="maxLength">10000</param>
+			<param name="minLength">1</param>
+			<message>Text must be less than 10000 characters</message>
+		</field-validator>
+	</field>
+</validators>
