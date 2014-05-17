@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN" "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+  <field name="property.name">
+      <field-validator type="stringlength">
+         <param name="maxLength">30</param>
+         <param name="minLength">1</param>
+         <message>The property name can only be 30 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter a name for your property</message>
+     </field-validator>
+  </field>
+  <field name="property.propertyDetails.fullName">
+      <field-validator type="stringlength">
+         <param name="maxLength">255</param>
+         <param name="minLength">1</param>
+         <message>The short description can only be 250 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter a short description for your property</message>
+     </field-validator>
+  </field>
+  <field name="property.propertyDetails.unit">
+      <field-validator type="stringlength">
+         <param name="maxLength">10</param>
+         <param name="minLength">0</param>
+         <message>The unit number can only by 10 characters long</message>
+     </field-validator>
+  </field>
+  <field name="property.propertyDetails.streetNumber">
+      <field-validator type="stringlength">
+         <param name="maxLength">50</param>
+         <param name="minLength">1</param>
+         <message>The street number can only be 50 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter the street number of the property</message>
+     </field-validator>
+  </field>
+  <field name="property.propertyDetails.street">
+      <field-validator type="stringlength">
+         <param name="maxLength">200</param>
+         <param name="minLength">1</param>
+         <message>The street name can only be 200 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter the street the property is on</message>
+     </field-validator>
+  </field>
+  <field name="property.propertyDetails.postcode">
+      <field-validator type="stringlength">
+         <param name="maxLength">200</param>
+         <param name="minLength">1</param>
+         <message>The postcode can only be 50 characters long</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please enter the postcode for this property</message>
+     </field-validator>
+  </field>
+  <field name="property.refundPolicy">
+      <field-validator type="stringlength">
+         <param name="maxLength">1</param>
+         <param name="minLength">1</param>
+         <message>The refund policy is required</message>
+     </field-validator>
+     <field-validator type="requiredstring">
+     	<message>Please select the refund policy for the property</message>
+     </field-validator>
+  </field>
+  <field name="property.minNights">
+		<field-validator type="int">
+			<param name="min">1</param>
+			<param name="max">30</param>
+			<message>Min nights must be between 1 and 30</message>
+		</field-validator>
+		<field-validator type="required">
+			<message>Please select</message>
+		</field-validator>
+	</field>
+</validators>
