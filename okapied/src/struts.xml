@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<bean type="org.apache.struts2.dispatcher.mapper.ActionMapper"
+		name="okapiedMapper" class="okapied.util.CustomActionMapper" />
+	<constant name="struts.mapper.class" value="okapiedMapper" />
+
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory.spring.autoWire" value="name" />
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect"
+		value="true" />
+	<constant name="struts.multipart.maxSize" value="100000000" />
+	<constant name="struts.serve.static" value="true" />
+	
+	<package name="IPN" namespace="/IPN" extends="struts-default">
+		    <global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+	
+		<action name="IPN_*" method="{1}" class="okapied.action.app.IPN">
+			<result name="list">/App/empty.jsp</result>
+		</action>
+	</package>	
+	
+	<package name="App" namespace="/App" extends="struts-default">
+	
+	    <global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+	
+		<action name="Booking_*" method="{1}" class="okapied.action.app.BookingAction">
+			<result name="list">/App/booking.jsp</result>
+			<result name="start" type="redirect">${redirectUrl}</result>
+			<result name="error">/App/booking.jsp</result>
+			<result name="cancel">/App/booking.jsp</result>
+			<result name="complete">/App/booking.jsp</result>
+		</action>
+		<action name="Publish_*" method="{1}" class="okapied.action.app.Publish">
+			<result name="list">/App/list.jsp</result>
+			<result name="input">/App/list.jsp</result>
+			<result name="error">/App/list.jsp</result>
+			<result name="listsubmit" type="redirect">/App/Details/list?propertyId=${propertyId}</result>
+			<result name="editsubmit">/App/list.jsp</result>
+		</action>
+		<action name="Details_*" method="{1}" class="okapied.action.app.Details">
+			<result name="list">/App/details.jsp</result>
+			<result name="input">/App/details.jsp</result>
+			<result name="error">/App/details.jsp</result>
+			<result name="listsubmit">/App/details.jsp</result>
+		</action>
+		<action name="PropertyText_*" method="{1}" class="okapied.action.app.PropertyText">
+			<result name="list">/App/propertytext.jsp</result>
+			<result name="input">/App/propertytext.jsp</result>
+			<result name="error">/App/propertytext.jsp</result>
+			<result name="listsubmit">/App/propertytext.jsp</result>
+		</action>
+		<action name="Photos_*" method="{1}" class="okapied.action.app.Photos">
+			<result name="list">/App/photos.jsp</result>
+			<result name="input">/App/photos.jsp</result>
+			<result name="error">/App/photos.jsp</result>
+			<result name="listsubmit">/App/photos.jsp</result>
+			<result name="remove">/App/photos.jsp</result>
+			<result name="removeall">/App/photos.jsp</result>
+		</action>
+		<action name="Av_*" method="{1}" class="okapied.action.app.Av">
+			<result name="list">/App/av.jsp</result>
+			<result name="input">/App/av.jsp</result>
+			<result name="error">/App/av.jsp</result>
+			<result name="listsubmit">/App/av.jsp</result>
+		</action>
+		<action name="IPN_*" method="{1}" class="okapied.action.app.IPN">
+			<result name="list">/App/empty.jsp</result>
+		</action>
+		<action name="ViewBooking_*" method="{1}" class="okapied.action.app.ViewBooking">
+		    <interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			<result name="list">/App/booking_view_user.jsp</result>
+			<result name="feedback">/App/booking_view_user.jsp</result>
+			<result name="input">/App/booking_view_user.jsp</result>
+			<result name="refund">/App/booking_view_user.jsp</result>
+		</action>
+		<action name="ViewBookingOwner_*" method="{1}" class="okapied.action.app.ViewBookingOwner">
+		    <interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+			<result name="list">/App/booking_view_owner.jsp</result>
+			<result name="feedback">/App/booking_view_owner.jsp</result>
+			<result name="input">/App/booking_view_owner.jsp</result>
+		</action>
+	</package>	
+
+	<package name="Rentals" namespace="/Rentals" extends="struts-default">
+	
+		<global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+
+		<action name="Search_*" method="{1}" class="okapied.action.Search">
+			<result name="list">/Rentals/list.jsp</result>
+		</action>
+		
+		<action name="Property_*" method="{1}" class="okapied.action.PropertyAction">
+			<result name="list">/Rentals/property.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="Browse" namespace="/Browse" extends="struts-default">
+	
+		<global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+		
+		<action name="Browse_*" method="{1}" class="okapied.action.browse.Browse">
+			<result name="list">/Browse/browse.jsp</result>
+			<result name="region">/Browse/region.jsp</result>
+			<result name="location">/Browse/location.jsp</result>
+		</action>
+		
+		<action name="Terms_*" method="{1}" class="okapied.action.TermsAction">
+			<result name="list">/Rentals/terms_full.jsp</result>
+		</action>
+		
+		<action name="Contact_*" method="{1}" class="okapied.action.ContactAction">
+			<result name="list">/Rentals/contact.jsp</result>
+		</action>
+		
+		<action name="Privacy_*" method="{1}" class="okapied.action.PrivacyAction">
+			<result name="list">/Rentals/privacy.jsp</result>
+		</action>
+		
+		<action name="AboutUs_*" method="{1}" class="okapied.action.AboutUsAction">
+			<result name="list">/Rentals/aboutus.jsp</result>
+		</action>
+
+	</package>
+	
+	<package name="File" namespace="/File" extends="struts-default">
+	
+	    <global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+
+		<action name="Photo_*" method="{1}" class="okapied.action.file.PhotoAction">
+			<result name="list" type="stream">
+				<param name="contentType">image/jpg</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+
+	</package>
+	
+	<package name="json" namespace="/JSON" extends="json-default">
+	
+		<global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+
+		<action name="Countries_*" method="{1}" class="okapied.action.json.Countries">
+			<result name="list" type="json">
+			    <param name="root">countries</param>
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Regions_*" method="{1}" class="okapied.action.json.Regions">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Availability_*" method="{1}" class="okapied.action.json.Availability">
+			<result name="list" type="json">
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Feedback_*" method="{1}" class="okapied.action.json.FeedbackAction">
+			<result name="list" type="json">
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Booking_*" method="{1}" class="okapied.action.json.BookingAction">
+			<result name="reservation" type="json">
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Properties_*" method="{1}" class="okapied.action.json.Properties">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Bookings_*" method="{1}" class="okapied.action.json.Bookings">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="PropertyBookings_*" method="{1}" class="okapied.action.json.PropertyBookings">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="SaveAvailability_*" method="{1}" class="okapied.action.json.SaveAvailability">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+            <result name="clear" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Places_*" method="{1}" class="okapied.action.json.Places">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+		
+		<action name="Locations_*" method="{1}" class="okapied.action.json.Locations">
+			<result name="list" type="json">
+			    <!--<param name="root">regions</param>-->
+			    <param name="excludeNullProperties">true</param>
+            </result>
+		</action>
+	</package>
+	
+	<package name="Account" namespace="/Account" extends="struts-default">
+
+		<global-results>
+	        <result name="custom_error">/Rentals/error.jsp</result>
+	    </global-results>
+	    
+	    <global-exception-mappings>
+	        <exception-mapping result="custom_error" exception="java.lang.Exception"></exception-mapping>
+	    </global-exception-mappings>
+
+		<action name="Account_*" method="{1}" class="okapied.action.account.Account">
+			<result name="login">/Account/login.jsp</result>
+			<result name="create">/Account/create.jsp</result>
+			<result name="input">/Account/create.jsp</result>
+			<result name="error">/Account/create.jsp</result>
+			<result name="save">/message.jsp</result>
+			<result name="activate">/Account/login.jsp</result>
+			<result name="edit">/Account/edit.jsp</result>
+		</action>
+		
+		<action name="AccountEdit_*" method="{1}" class="okapied.action.account.AccountEdit">
+			<result name="list">/Account/edit.jsp</result>
+			<result name="input">/Account/edit.jsp</result>
+			<result name="error">/Account/edit.jsp</result>
+		</action>
+
+	</package>
+</struts>
